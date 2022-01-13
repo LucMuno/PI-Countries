@@ -10,7 +10,7 @@ const router = Router();
 
 router.get('/countries', async (req, res) => {
     const name = req.query.name;
-    let allCountries = await Country.findAll();//getCountries(); 
+    let allCountries = await Country.findAll();
     if(name){
         let countryName = await allCountries.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
         countryName.length ?
