@@ -2,51 +2,100 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
-const {Country, TouristActivity} = require('../db.js');
+const {Country, Activity} = require('../db.js');
+const { Op } = require('sequelize');
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/countries', async (req, res) => {
-    const name = req.query.name;
-    let allCountries = await Country.findAll();
-    if(name){
-        let countryName = await allCountries.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
-        countryName.length ?
-        res.status(200).send(countryName) :
-        res.status(404).send('Country not found');
-    }else{
-        
-        res.status(200).send(allCountries)
+
+router.get('/countries', async (req, res, next) =>{
+    let Name = req.query.name
+        if (Name) {    
+            try{
+                let paQuery = await Country.findAll({
+                    include: Activity,
+                    where:{
+                        name:{
+                            [Op.iLike]: '%' + Name + '%'}}})
+                if (!paQuery.length) {
+                    return res.status(404).json('Country not found')
+                }else{
+                    return res.json(paQuery)
+                }
+            }
+            catch(error){
+                next(error);
+            }
+        }
+    try{
+        const paisesBd = await Country.findAll({
+            include: {model: Activity}
+        })
+        return res.json(paisesBd)
     }
-});
-
-router.post('/activity', async (req, res) => {
-    let { name, difficulty, duration, season } = req.body
-    let data = {
-        name: name,
-        difficulty: difficulty,
-        duration: duration,
-        season: season
+    catch(error){
+        next(error);
     }
-    console.log(data)
-    await TouristActivity.findOrCreate({where: data})
-    .catch(error => error)
-    res.status(200).send('Successful tourist activity created')
-})
-
-router.get('/countries/:id', async (req, res) => {
-    const id = req.params.id.toUpperCase();
-    const countryId = await Country.findByPk(id);
-        if(countryId){
-            return res.send(countryId)
-        }else{
-           res.status(404).send('Country not found')
-
-        }    
-        
-        
+    })
     
-})
+    router.get('/countries/:id', async (req, res, next)=>{   
+    try{
+        const {id} = req.params;
+        var ap = await Country.findByPk(id,{
+        include: Activity,
+        })
+        return res.send(ap)
+        }
+    catch(error){
+        next(error)
+    }
+    })
+
+router.post('/activities', async (req, res, next) => {
+    const {name,difficulty,duration,season,countryId} = req.body
+    try {
+        if(name && difficulty && duration && season){
+            let activityCreated = await Activity.create({
+                    name,
+                    difficulty ,
+                    duration ,
+                    season,
+                })
+    try {
+        let country = await Country.findAll({
+            where:{
+                id : countryId
+            }})
+            await activityCreated.addCountries(country)
+            res.send(country)
+    }
+    catch (error) {
+            next(error)
+        }
+    }
+    else{
+        res.status(404).send("Error entry inputs are wrong")
+        }
+    }
+    catch (error) {
+        next(error)
+        }
+    });
+
+    router.get('/activities', async (req, res) => {
+        const name = req.query.name;
+        let allActivities = await Activity.findAll();
+        if(name){
+            let countryName = await allActivities.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
+            countryName.length ?
+            res.status(200).send(countryName) :
+            res.status(404).send('Country not found');
+        }else{
+            
+            res.status(200).send(allActivities)
+        }
+    });
+    
 module.exports = router;
