@@ -41,3 +41,43 @@ export function getNameCountries(name){
         }
     }
 }
+export function postTouristActivity(payload){
+    return async function(dispatch){
+        try{
+        var json = await axios.post("http://localhost:3001/activities", payload);
+        return dispatch({
+            type: 'POST_TOURIST_ACTIVITY',
+            payload : json
+        });
+        }catch(error){
+            console.log('aqui',error)
+        }
+    }
+}
+export function getActivity(){
+    return async function(dispatch){
+        var json = await axios.get("http://localhost:3001/activities");
+        return dispatch({
+            type: 'GET_ACTIVITY',
+            payload: json.data
+        })
+    }
+}
+export function filterCountryByActivity(payload) {
+    console.log(payload)
+    return{
+        type: 'FILTER_BY_ACTIVITY',
+        payload
+}};
+export function getDetail(id) {
+    return async function (dispatch) {
+        try{
+            var json = await axios.get("http://localhost:3001/countries/"+id)
+            return  dispatch({
+                type: 'GET_DETAIL',
+                payload : json.data
+            });
+        }catch(e){
+        console.log(e);
+}}};
+

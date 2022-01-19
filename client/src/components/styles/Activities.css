@@ -1,0 +1,111 @@
+.Button{
+    position:relative;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:8px;
+    padding-right:8px;
+    margin: 5px;
+    background-color: transparent;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+}
+.Button:hover {
+    background-color:#0eabe9;
+    transition:0.5s;
+}
+.ButtonBackH{
+    position:relative;
+    left:10px;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:8px;
+    padding-right:8px;
+    margin: 5px;
+    background-color: #0eabe9;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+}
+.ButtonBackH:hover {
+    border-color: whitesmoke;
+    transition:0.5s;
+}
+.ButtonCA{
+    position: relative;
+    top: 5px;
+    left:475px;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:8px;
+    padding-right:8px;
+    margin: 5px;
+    background-color: #0eabe9;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+}
+.ButtonCA:hover {
+    border-color: whitesmoke;
+    transition:0.5s;
+}
+.selectAct {
+    appearance: none;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+    position:relative;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:8px;
+    padding-right:8px;
+    margin: 5px;
+    background-color: transparent;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+   }
+   
+   .selectAct:hover {
+    background-color:#0eabe9;
+    transition:0.5s;
+   }
+.CreateActivity{
+    width: 900px;
+    height: 800px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content:stretch;
+    position: relative;
+    left: 400px;
+    background-color: rgba(255, 255, 255, 0.376);
+
+}   
+.label{
+    font-size: 18;
+    font-weight: 700;
+}
+.Nav{
+    display: flex;
+    position:relative;
+    flex-direction: row;
+    top: 2px;
+    bottom: 900px;
+}

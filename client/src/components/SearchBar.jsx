@@ -1,3 +1,4 @@
+import './styles/Home.css'
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -14,17 +15,24 @@ export default function SearchBar(){
     
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(getNameCountries(name))
+        if (name !== ""){
+            dispatch(getNameCountries(name));
+            setName("");
+        } else {
+            alert("Input a correct name");
+        };
+    
     }
 
     return(
-        <div>
+        <div className='SearchBar'>
             <input
+            className='HomeInput'
             type= 'text'
-            placeholder='search...'
+            placeholder='input country name'
             onChange={(e) => handleInputChange(e)}
             />
-            <button type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
+            <button className= 'SearchButton' type='submit' onClick={(e) => handleSubmit(e)}>SEARCH BY NAME</button>
         </div>
     )
 }

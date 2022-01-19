@@ -1,6 +1,8 @@
 const initialState = {
     countries : [],
-    allCountries: []
+    allCountries: [],
+    activity: [],
+    detail: []
 }
 
 function rootReducer(state = initialState, action){
@@ -75,7 +77,34 @@ function rootReducer(state = initialState, action){
                 return {
                     ...state,
                     countries: action.payload
-                }      
+                }   
+            case 'POST_TOURIST_ACTIVITY':
+                return {
+                    ...state
+                }  
+            case 'GET_ACTIVITY':
+                return{
+                   ...state,
+                   activities : action.payload
+                };  
+            case 'FILTER_BY_ACTIVITY':
+                const array = []
+            state.allCountries.map(el => el.Activities?.forEach(element => {
+                console.log(el.Activities)
+             if (element.name === action.payload) {
+                array.push(el)
+                };
+            }));
+            console.log(array)
+            return{
+                ...state,
+                countries: array
+            };
+            case 'GET_DETAIL':
+                return{
+                    ...state,
+                    detail: action.payload
+            };
         default:
         return state;
     }

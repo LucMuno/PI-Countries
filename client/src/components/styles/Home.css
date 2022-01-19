@@ -1,0 +1,130 @@
+.card{
+    width: 280px;
+    height: 380px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.card{
+    float: left;
+    justify-content: space-evenly;
+    display: flex;
+    width: 350px;
+    margin: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    position: relative;
+    left: 85px;
+}
+.paged{
+    display: flex;
+    top: 20px;
+    position: relative;
+    left: 70px;
+}
+.container{
+    box-sizing: border-box;
+    justify-content: center;
+    display: absolute;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+.ButtonsContainer{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    left: 60px;
+    top: 20px;
+}
+.btnAdmin{
+    padding: 4px 10px;
+    border: none;
+    background: transparent;
+    color: white;
+    border: 0.5px solid #0099CC;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.btnAdmin:hover{
+    background-color: #0eabe9;
+    color: white;
+    transition:0.5s;
+    border: 0.2px solid  #2ed9e9;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.HomeButton{
+    position:relative;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color: transparent;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+}
+.HomeButton:hover {
+    background-color:#0eabe9;
+    transition:0.5s;
+}
+.select-css {
+    appearance: none;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+    position:relative;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color: transparent;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+   }
+   
+   .select-css:hover {
+    background-color:#0eabe9;
+    transition:0.5s;
+   }
+.option-css {
+    appearance: none;
+}
+.SearchBar{
+    display: flex;
+    position:relative;
+    left: 90px;
+    top: 15px;
+}
+.SearchButton{
+    position:relative;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:6px;
+    padding-bottom:6px;
+    padding-left:6px;
+    padding-right:6px;
+    background-color: #2ed9e9;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+}
+.SearchButton:hover {
+    background-color:#0eabe9;
+    transition:0.5s;
+}
+.HomeInput{
+    font-size: 15px;
+}

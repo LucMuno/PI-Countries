@@ -1,0 +1,40 @@
+.BackButton{
+    position:relative;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color: transparent;
+    border-color: #2ed9e9;
+    border-width: 3px;
+    border-style: solid;
+}
+.BackButton:hover {
+    background-color:#0eabe9;
+    transition:0.5s;
+}
+.Detail {
+    margin: 20px;
+    width: 18.2rem;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+    background-color: rgba(255, 255, 255, 0.376);
+}
+.DetailComp{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items:flex-end;
+    justify-content:space-around;
+    position: relative;
+}
+.Data{
+    padding: 0;
+    margin: 0;
+}
