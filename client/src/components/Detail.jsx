@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../actions";
 import { useEffect } from "react";
 import './styles/Detail.css'
+import './styles/Home.css'
 
 export default function Detail(props) {
     const dispatch =  useDispatch();
-
+console.log('prueba', props)
 useEffect(()=>{
     dispatch(getDetail(props.match.params.id)); 
 },[dispatch, props.match.params.id]);
@@ -51,7 +52,7 @@ function selectDuration(value){
 return(
     <>
      <div> 
-        <Link to='/home'><button className="BackButton">BACK TO HOME</button></Link>
+        <Link to='/home'><button className="btnAdmin">BACK TO HOME</button></Link>
     </div>
     <div className="DetailComp">
     <div className="Detail">
@@ -79,7 +80,7 @@ return(
                 </div> : 
                 
                 Country?.Activities.map((activity) => (
-                <div className='Detail'>
+                <div className='DetailTA'>
                         <h4>Tourist Activity: {activity.name} </h4>
                         <h4>Difficulty: {selectDifficulty(activity.difficulty)} </h4>
                         <h4>Season: {activity.season} </h4>

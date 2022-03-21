@@ -20,7 +20,6 @@
 }
 .ButtonBackH{
     position:relative;
-    left:10px;
     text-decoration:none;
     font-weight: 600;
     font-size: 15px;
@@ -38,11 +37,10 @@
 .ButtonBackH:hover {
     border-color: whitesmoke;
     transition:0.5s;
+    box-shadow: -1px 2px 15px 6px rgba(10, 237, 245, 0.965);
 }
 .ButtonCA{
     position: relative;
-    top: 5px;
-    left:475px;
     text-decoration:none;
     font-weight: 600;
     font-size: 15px;
@@ -60,6 +58,15 @@
 .ButtonCA:hover {
     border-color: whitesmoke;
     transition:0.5s;
+    box-shadow: -1px 2px 15px 6px rgba(10, 237, 245, 0.965);
+}
+.rightButton {
+    display: flex;
+    align-items: flex-start;
+}
+.leftButton {
+    display: flex;
+    align-items: flex-end;
 }
 .selectAct {
     appearance: none;
@@ -86,18 +93,23 @@
     transition:0.5s;
    }
 .CreateActivity{
-    width: 900px;
-    height: 800px;
+    width: 700px;
+    height: 600px;
     top: 100px;
     display: flex;
     flex-direction: column;
     align-items: right;
     justify-content:stretch;
     position: relative;
-    left: 400px;
     background-color: rgba(255, 255, 255, 0.376);
 
 }   
+.activityContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 .label{
     font-size: 18;
     font-weight: 700;
@@ -105,6 +117,7 @@
 .Nav{
     display: flex;
     position:relative;
+    justify-content: space-between;
     flex-direction: row;
     top: 2px;
     bottom: 900px;

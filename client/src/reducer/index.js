@@ -95,10 +95,11 @@ function rootReducer(state = initialState, action){
                 array.push(el)
                 };
             }));
-            console.log(array)
+            const array2 =  [...new Set(array)]
+            console.log("new array", array2)
             return{
                 ...state,
-                countries: array
+                countries: array2
             };
             case 'GET_DETAIL':
                 return{

@@ -63,54 +63,62 @@ function handleFilterActivity(e){
 }
 
     return(
-        <div className='container'>
-        <div className='ButtonsContainer'>
+        <div>
+        <nav className='navbar'>
         
         
         <div>
             
-            <button className='HomeButton' onClick={e=>{handleClick(e)}}>LOAD ALL COUNTRIES</button>
+            <button className='btnAdmin' onClick={e=>{handleClick(e)}}>LOAD ALL COUNTRIES</button>
         </div>
-        
-            <select className='select-css' onChange={e => handleSort(e)}>
-            <option hidden selected>Filter by Alphabetical Order</option>
-                <option value='asc'>A-Z</option>
-                <option value='desc'>Z-A</option>
-            </select>
-            <select className='select-css' onChange={e => handleSortPopulation(e)}>
-            <option hidden selected>Filter by Population</option>
-                <option className='option-css' value='hip'>Higher Population</option>
-                <option className='option-css' value='smp'>Smaller Population</option>
-            </select>
-            <select className='select-css' onChange={e => handleFilterContinent(e)}>
-            <option hidden selected>Filter by Continent</option>
-                <option value='All'>All</option>
-                <option value='Africa'>Africa</option>
-                <option value='America'>America</option>
-                <option value='Asia'>Asia</option>
-                <option value='Europe'>Europe</option>
-                <option value='Oceania'>Oceania</option>
-            </select>
             <div>
-                    <select className='select-css' onChange={(e)=>handleFilterActivity(e)}>
+            <select className='btnAdmin' onChange={e => handleSort(e)}>
+            <option hidden selected>Filter by Alphabetical Order</option>
+                <option className='Option' value='asc'>A-Z</option>
+                <option className='Option' value='desc'>Z-A</option>
+            </select>
+            </div>
+            <div>
+            <select className='btnAdmin' onChange={e => handleSortPopulation(e)}>
+            <option hidden selected>Filter by Population</option>
+                <option className='Option' value='hip'>Higher Population</option>
+                <option className='Option' value='smp'>Smaller Population</option>
+            </select>
+            </div>
+            <div>
+            <select className='btnAdmin' onChange={e => handleFilterContinent(e)}>
+            <option hidden selected>Filter by Continent</option>
+                <option className='Option' value='All'>All</option>
+                <option className='Option' value='Africa'>Africa</option>
+                <option className='Option' value='America'>America</option>
+                <option className='Option' value='Asia'>Asia</option>
+                <option className='Option' value='Europe'>Europe</option>
+                <option className='Option' value='Oceania'>Oceania</option>
+            </select>
+            </div>
+            
+            <div>
+                    <select className='btnAdmin' onChange={(e)=>handleFilterActivity(e)}>
                     <option hidden selected>Filter by Tourist Activity</option>
                        {values.map((el) => (
-                            <option value= {el}>{el}</option>
+                            <option className='Option' value= {el}>{el}</option>
                         ))}
                        </select>
                   </div>
                   <div>
-            <Link to='/activities'><button className='HomeButton'>CREATE TOURIST ACTIVITIES</button></Link>
+            <Link to='/activities'><button className='btnAdmin'>CREATE TOURIST ACTIVITIES</button></Link>
         </div>         
-            </div>      
+            </nav>      
             <div className='paged'>      
             <Paged
                 countriesPerPage={countriesPerPage}
                 allCountries={allCountries.length}
                 paged={paged}
                 />
-            <SearchBar/>
             </div>
+            <SearchBar/>
+            
+            <div className='container'>
             {currentCountries?.map((el)=>{
                 return (
                     <div className='card'>
@@ -120,7 +128,7 @@ function handleFilterActivity(e){
                     </div>
                 )
             })}
-        
+            </div>
         </div>        
 
     )

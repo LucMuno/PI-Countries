@@ -1,130 +1,131 @@
+
 .card{
+	background-color:#ffffffb9;
+	padding: 10px;
     width: 280px;
-    height: 380px;
+    height: 300px;
+	display:flex;
+	justify-content:center;
+	align-items:stretch;
+	align-content: center;
+	text-decoration: none;
     border-radius: 8px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px rgba(10, 10, 10, 0.959);
     overflow: hidden;
     margin: 20px;
     text-align: center;
     transition: all 0.25s;
-    font-family: 'Josefin Sans', sans-serif;
-}
-.card{
-    float: left;
-    justify-content: space-evenly;
-    display: flex;
-    width: 350px;
-    margin: 20px;
-    font-family: 'Josefin Sans', sans-serif;
-    position: relative;
-    left: 85px;
-}
-.paged{
-    display: flex;
-    top: 20px;
-    position: relative;
-    left: 70px;
-}
-.container{
-    box-sizing: border-box;
-    justify-content: center;
-    display: absolute;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-}
-.ButtonsContainer{
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    left: 60px;
-    top: 20px;
-}
-.btnAdmin{
-    padding: 4px 10px;
-    border: none;
-    background: transparent;
-    color: white;
-    border: 0.5px solid #0099CC;
-    font-family: 'Josefin Sans', sans-serif;
-}
-.btnAdmin:hover{
-    background-color: #0eabe9;
-    color: white;
-    transition:0.5s;
-    border: 0.2px solid  #2ed9e9;
-    font-family: 'Josefin Sans', sans-serif;
-}
-.HomeButton{
-    position:relative;
-    text-decoration:none;
-    font-weight: 600;
-    font-size: 15px;
-    color:#ffffff;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:10px;
-    padding-right:10px;
-    background-color: transparent;
-    border-color: #2ed9e9;
-    border-width: 3px;
-    border-style: solid;
-}
-.HomeButton:hover {
-    background-color:#0eabe9;
-    transition:0.5s;
-}
-.select-css {
-    appearance: none;
-    -webkit-appearance: none;
-	-moz-appearance: none;
-    position:relative;
-    text-decoration:none;
-    font-weight: 600;
-    font-size: 15px;
-    color:#ffffff;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:10px;
-    padding-right:10px;
-    background-color: transparent;
-    border-color: #2ed9e9;
-    border-width: 3px;
-    border-style: solid;
-   }
    
-   .select-css:hover {
-    background-color:#0eabe9;
-    transition:0.5s;
-   }
-.option-css {
-    appearance: none;
 }
-.SearchBar{
+
+.card:hover {
+	box-shadow: -1px 2px 15px 6px rgba(10, 237, 245, 0.965);
+}
+.ImageContainer{
+	width: 260px;
+	height: 160px;
     display: flex;
-    position:relative;
-    left: 90px;
-    top: 15px;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
 }
-.SearchButton{
-    position:relative;
-    text-decoration:none;
-    font-weight: 600;
-    font-size: 15px;
-    color:#ffffff;
-    padding-top:6px;
-    padding-bottom:6px;
-    padding-left:6px;
-    padding-right:6px;
-    background-color: #2ed9e9;
-    border-color: #2ed9e9;
-    border-width: 3px;
-    border-style: solid;
+
+.Text{
+	height:120px;
+	width: 250px;
+    display: flex;
+	margin: 10px;
+    justify-content:flex-end;
+    flex-direction: column;
+    align-items: center;
 }
-.SearchButton:hover {
-    background-color:#0eabe9;
-    transition:0.5s;
+
+.Name{
+	margin: 10px;
+	text-decoration: none;
+	color: black;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-.HomeInput{
-    font-size: 15px;
+
+.paged{
+	background-color: transparent/*#FFE4B5*/;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+ } 
+ 
+.container {
+	margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+	background-color: transparent/*#87ADDE*/;
+    align-items: flex-start;
+    align-content: stretch;
+}
+
+   
+.btnAdmin {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-family: arial;
+	color: #5C5C5C !important;
+	font-size: 12px;
+	text-shadow: 1px 1px 0px #363636;
+	box-shadow: 1px 1px 4px #B3B3B3;
+	padding: 8px 10px;
+	border-radius: 6px;
+	border: 2px solid #1B1B1B;
+	background: FFF7E8;
+	background: linear-gradient(to top, #CECECE, #686868);
+  }
+  
+  .btnAdmin:hover {
+	color: #FFFFFF !important;
+	background: #B3B3B3;
+	background: linear-gradient(to top, #686868, #CECECE);
+	
+  }
+  .Option {
+      color:#1B1B1B
+  }
+
+.navbar{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	margin-top: 5px;
+	
+ }
+ 
+ .inputSearch {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-family: arial;
+	color: black !important;
+	font-size: 12px;
+	box-shadow: 1px 1px 4px #B3B3B3;
+	padding: 8px 10px;
+	border-radius: 6px;
+	border: 2px solid #363636;
+	background: FFF7E8;
+	
+  }
+  
+
+.searchBar{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+    justify-content: center;
+}
+.navPaged {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+    justify-content: center;
 }

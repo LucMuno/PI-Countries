@@ -105,14 +105,15 @@ export default function CreateTouristActivity(){
         }); 
 
     return(
+        <div className="activityContainer">
         <div className="CreateActivity">
             <nav className="Nav">
-        
+            <div className="rightButton">
             <Link to= '/home'><button className="ButtonBackH">BACK TO HOME</button></Link>
-            
-            
+            </div>
+            <div className="leftButton">
             <Link to='/activities'><button className="ButtonCA">CREATE NEW TOURIST ACIVITY</button></Link>
-             
+            </div> 
             </nav>
             <h1>CREATE TOURIST ACTIVITIES</h1>
             <form>
@@ -171,7 +172,7 @@ export default function CreateTouristActivity(){
             </form>
              
         </div>
-        
+        </div>
     )
 }
 

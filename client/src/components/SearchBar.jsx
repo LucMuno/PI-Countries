@@ -25,14 +25,16 @@ export default function SearchBar(){
     }
 
     return(
-        <div className='SearchBar'>
+        <div className='navbar'>
+            
             <input
-            className='HomeInput'
+            className='inputSearch'
             type= 'text'
             placeholder='input country name'
             onChange={(e) => handleInputChange(e)}
             />
-            <button className= 'SearchButton' type='submit' onClick={(e) => handleSubmit(e)}>SEARCH BY NAME</button>
+            <button className= 'btnAdmin' type='submit' onClick={(e) => handleSubmit(e)}>SEARCH BY NAME</button>
+           
         </div>
     )
 }
