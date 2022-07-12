@@ -62,8 +62,12 @@ function handleFilterActivity(e){
     dispatch(filterCountryByActivity(e.target.value))
 }
 
+if(!allCountries){
+    return <h1>LOADING...</h1>
+  }else{
     return(
         <div>
+        
         <nav className='navbar'>
         
         
@@ -122,14 +126,15 @@ function handleFilterActivity(e){
             {currentCountries?.map((el)=>{
                 return (
                     <div className='card'>
-                        <Link to={'/home/' + el.id}>
+                        <Link to={'/home/' + el.id} style={{textDecoration:"none", color:"black"}}>
                             <Card flagimg={el.flagimg} name={el.name} continent={el.continent} key={el.id}/>
                         </Link>
                     </div>
                 )
             })}
             </div>
+          
         </div>        
-
     )
+   }  
 }
