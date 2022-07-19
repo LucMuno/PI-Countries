@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import {getCountries, postTouristActivity, getActivity} from '../actions/index';
-import './styles/Activities.css'
+import style from './styles/Activities.module.css'
 
 function validate(input) {
     if(!input.name){ console.log(input.name)
@@ -105,25 +105,25 @@ export default function CreateTouristActivity(){
         }); 
 
     return(
-        <div className="activityContainer">
-        <div className="CreateActivity">
-            <nav className="Nav">
-            <div className="rightButton">
-            <Link to= '/home'><button className="ButtonBackH">BACK TO HOME</button></Link>
+        <div className={style.activityContainer}>
+        <div className={style.CreateActivity}>
+            <nav className={style.Nav}>
+            <div className={style.rightButton}>
+            <Link to= '/home'><button className={style.ButtonBackH}>BACK TO HOME</button></Link>
             </div>
-            <div className="leftButton">
-            <Link to='/activities'><button className="ButtonCA">CREATE NEW TOURIST ACIVITY</button></Link>
+            <div className={style.leftButton}>
+            <Link to='/activities'><button className={style.ButtonCA}>CREATE NEW TOURIST ACIVITY</button></Link>
             </div> 
             </nav>
             <h1>CREATE TOURIST ACTIVITIES</h1>
             <form>
                 <div>
-                    <label className="label">Name:</label>
+                    <label className={style.label}>Name:</label>
                     <input placeholder='Input name' type= 'text' value= {input.name} name= 'name' onChange={(e)=>handleName(e)}/>
                 </div>
                 <div>
-                    <label className="label">Difficulty:</label>
-                    <select className="selectAct" onChange={(e)=>handleDifficulty(e)}>
+                    <label className={style.label}>Difficulty:</label>
+                    <select className={style.selectAct} onChange={(e)=>handleDifficulty(e)}>
                     <option hidden selected>Select Difficulty Level</option>    
                     <option value='1'>1 Low difficulty</option>
                     <option value='2'>2 Medium difficulty</option>
@@ -133,8 +133,8 @@ export default function CreateTouristActivity(){
                     </select>
                 </div>
                 <div>
-                    <label className="label">Duration Time</label>
-                    <select className="selectAct" onChange={(e)=>handleDuration(e)}>
+                    <label className={style.label}>Duration Time</label>
+                    <select className={style.selectAct} onChange={(e)=>handleDuration(e)}>
                     <option hidden selected>Select Duration</option>
                     <option value='1'>1 to 3 hours</option>
                     <option value='2'>3 to 6 hours</option>
@@ -144,8 +144,8 @@ export default function CreateTouristActivity(){
                     </select>
                 </div>
                 <div>
-                    <label className="label">Season</label>
-                    <select className="selectAct" onChange={(e)=>handleSeason(e)}>
+                    <label className={style.label}>Season</label>
+                    <select className={style.selectAct} onChange={(e)=>handleSeason(e)}>
                     <option hidden selected>Select Season</option>
                     <option value='summer'>Summer</option>
                     <option value='autumn'>Autumn</option>
@@ -154,13 +154,13 @@ export default function CreateTouristActivity(){
                     </select>
                 </div>
                 <div>
-                    <label className="label">Select Country/ies</label>
-                    <select className="selectAct" onChange={(e)=>handleCountries(e)}>
+                    <label className={style.label}>Select Country/ies</label>
+                    <select className={style.selectAct} onChange={(e)=>handleCountries(e)}>
                        {sortedArr.map((country) => (
                             <option value= {country.id}>{country.name}</option>
                         ))}
                     </select>
-                    <button className="Button" type='submit' onClick={(e) => handleSubmit(e)}>ADD TOURIST ACTIVITY !</button>
+                    <button className={style.Button} type='submit' onClick={(e) => handleSubmit(e)}>ADD TOURIST ACTIVITY !</button>
                 </div>
                 <div>
             {input.countryId.map(el=> 

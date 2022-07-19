@@ -7,7 +7,7 @@ body{
     background-size: cover;
     font-family: 'Josefin Sans', sans-serif;
     align-items:center;
-    height: auto;
+    /*height: auto;*/
 }
 .Welcome{
     color: aliceblue;

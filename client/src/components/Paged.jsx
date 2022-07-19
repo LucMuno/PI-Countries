@@ -1,4 +1,4 @@
-import './styles/Home.css'
+import style from './styles/Home.module.css'
 import React from 'react';
 
 export default function Paged({countriesPerPage, allCountries, paged}){
@@ -10,11 +10,11 @@ export default function Paged({countriesPerPage, allCountries, paged}){
 
     return(
         <nav>
-            <ul className='paged'>
+            <ul className={style.paged}>
                 {pageNumbers &&
                     pageNumbers.map(number => (
                         
-                         <button key= {number} className='btnAdmin' onClick={()=> paged(number)}>{number}</button>   
+                         <button key= {number} className={style.btnAdmin} onClick={()=> paged(number)}>{number}</button>   
                         
                     ))
                 }

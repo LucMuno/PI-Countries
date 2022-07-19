@@ -1,4 +1,4 @@
-import './styles/Home.css'
+import style from './styles/Home.module.css'
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -25,15 +25,15 @@ export default function SearchBar(){
     }
 
     return(
-        <div className='navbar'>
+        <div className={style.navbar}>
             
             <input
-            className='inputSearch'
+            className={style.inputSearch}
             type= 'text'
             placeholder='input country name'
             onChange={(e) => handleInputChange(e)}
             />
-            <button className= 'btnAdmin' type='submit' onClick={(e) => handleSubmit(e)}>SEARCH BY NAME</button>
+            <button className= {style.btnAdmin} type='submit' onClick={(e) => handleSubmit(e)}>SEARCH BY NAME</button>
            
         </div>
     )

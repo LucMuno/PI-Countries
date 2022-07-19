@@ -1,4 +1,4 @@
-import './styles/Home.css'
+import style from './styles/Home.module.css'
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -68,52 +68,52 @@ if(!allCountries){
     return(
         <div>
         
-        <nav className='navbar'>
+        <nav className={style.navbar}>
         
         
         <div>
             
-            <button className='btnAdmin' onClick={e=>{handleClick(e)}}>LOAD ALL COUNTRIES</button>
+            <button className={style.btnAdmin} onClick={e=>{handleClick(e)}}>LOAD ALL COUNTRIES</button>
         </div>
             <div>
-            <select className='btnAdmin' onChange={e => handleSort(e)}>
+            <select className={style.btnAdmin} onChange={e => handleSort(e)}>
             <option hidden selected>Filter by Alphabetical Order</option>
-                <option className='Option' value='asc'>A-Z</option>
-                <option className='Option' value='desc'>Z-A</option>
+                <option className={style.Option} value='asc'>A-Z</option>
+                <option className={style.Option} value='desc'>Z-A</option>
             </select>
             </div>
             <div>
-            <select className='btnAdmin' onChange={e => handleSortPopulation(e)}>
+            <select className={style.btnAdmin} onChange={e => handleSortPopulation(e)}>
             <option hidden selected>Filter by Population</option>
-                <option className='Option' value='hip'>Higher Population</option>
-                <option className='Option' value='smp'>Smaller Population</option>
+                <option className={style.Option} value='hip'>Higher Population</option>
+                <option className={style.Option} value='smp'>Smaller Population</option>
             </select>
             </div>
             <div>
-            <select className='btnAdmin' onChange={e => handleFilterContinent(e)}>
+            <select className={style.btnAdmin} onChange={e => handleFilterContinent(e)}>
             <option hidden selected>Filter by Continent</option>
-                <option className='Option' value='All'>All</option>
-                <option className='Option' value='Africa'>Africa</option>
-                <option className='Option' value='America'>America</option>
-                <option className='Option' value='Asia'>Asia</option>
-                <option className='Option' value='Europe'>Europe</option>
-                <option className='Option' value='Oceania'>Oceania</option>
+                <option className={style.Option} value='All'>All</option>
+                <option className={style.Option} value='Africa'>Africa</option>
+                <option className={style.Option} value='America'>America</option>
+                <option className={style.Option} value='Asia'>Asia</option>
+                <option className={style.Option} value='Europe'>Europe</option>
+                <option className={style.Option} value='Oceania'>Oceania</option>
             </select>
             </div>
             
             <div>
-                    <select className='btnAdmin' onChange={(e)=>handleFilterActivity(e)}>
+                    <select className={style.btnAdmin} onChange={(e)=>handleFilterActivity(e)}>
                     <option hidden selected>Filter by Tourist Activity</option>
                        {values.map((el) => (
-                            <option className='Option' value= {el}>{el}</option>
+                            <option className={style.Option} value= {el}>{el}</option>
                         ))}
                        </select>
                   </div>
                   <div>
-            <Link to='/activities'><button className='btnAdmin'>CREATE TOURIST ACTIVITIES</button></Link>
+            <Link to='/activities'><button className={style.btnAdmin}>CREATE TOURIST ACTIVITIES</button></Link>
         </div>         
             </nav>      
-            <div className='paged'>      
+            <div>      
             <Paged
                 countriesPerPage={countriesPerPage}
                 allCountries={allCountries.length}
@@ -122,10 +122,10 @@ if(!allCountries){
             </div>
             <SearchBar/>
             
-            <div className='container'>
+            <div className={style.container}>
             {currentCountries?.map((el)=>{
                 return (
-                    <div className='card'>
+                    <div>
                         <Link to={'/home/' + el.id} style={{textDecoration:"none", color:"black"}}>
                             <Card flagimg={el.flagimg} name={el.name} continent={el.continent} key={el.id}/>
                         </Link>

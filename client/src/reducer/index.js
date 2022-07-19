@@ -2,7 +2,8 @@ const initialState = {
     countries : [],
     allCountries: [],
     activity: [],
-    detail: []
+    detail: [],
+    cams: []
 }
 
 function rootReducer(state = initialState, action){
@@ -106,6 +107,11 @@ function rootReducer(state = initialState, action){
                     ...state,
                     detail: action.payload
             };
+            case 'GET_CAMS':
+            return {
+                ...state,
+                cams: action.payload,
+            }
         default:
         return state;
     }

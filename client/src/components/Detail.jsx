@@ -1,19 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../actions";
+import { getDetail, getCams } from "../actions";
 import { useEffect } from "react";
-import './styles/Detail.css'
-import './styles/Home.css'
+import styleD from './styles/Detail.module.css'
+import style from './styles/Home.module.css'
 
 export default function Detail(props) {
     const dispatch =  useDispatch();
 console.log('prueba', props)
 useEffect(()=>{
     dispatch(getDetail(props.match.params.id)); 
+    dispatch(getCams(props.match.params.id));
 },[dispatch, props.match.params.id]);
 
 const Country = useSelector((state)=> state.detail); 
+const Cameras = useSelector((state)=> state.cams)
+console.log("cameras", Cameras)
 console.log(Country.Activities, 'hola');
 
 function selectDifficulty(value){
@@ -52,24 +55,33 @@ function selectDuration(value){
 return(
     <>
      <div> 
-        <Link to='/home'><button className="btnAdmin">BACK TO HOME</button></Link>
+        <Link to='/home'><button className={style.btnAdmin}>BACK TO HOME</button></Link>
     </div>
-    <div className="DetailComp">
-    <div className="Detail">
-        {
-            Country.Activities?
-            <div className="Detail">
+    <div className={styleD.DetailComp}>
+    {/*<div className={styleD.Detail}>*/}
+        
+            
+            <div className={styleD.Detail}>
             <h1>{Country.name}</h1>
             <img src = {Country.flagimg} alt='Image no found' width='250px' height='175px' margin='3px'/>
-            <h2 className="Data">ID: {Country.id}</h2>
-            <h2 className="Data">Continent: {Country.continent}</h2>
-            <h3 className="Data" alt='Capital not found'>Capital: {Country.capital}</h3>
-            <h4 className="Data" alt='Subregion not found'>Subregion: {Country.subregion}</h4>
-            <h5 className="Data">Area: {Country.area} km²</h5>
-            <h5 className="Data">Population: {Country.population} inhabitants</h5>
-
-        {
+            <h2 className={styleD.Data}>ID: {Country.id}</h2>
+            <h2 className={styleD.Data}>Continent: {Country.continent}</h2>
+            <h3 className={styleD.Data} alt='Capital not found'>Capital: {Country.capital}</h3>
+            <h4 className={styleD.Data} alt='Subregion not found'>Subregion: {Country.subregion}</h4>
+            <h5 className={styleD.Data}>Area: {Country.area} km²</h5>
+            <h5 className={styleD.Data}>Population: {Country.population} inhabitants</h5>
+            </div>
+            {
+                Cameras?.map((cam)=>(
+                    <div className={style.ImgContainer}>
+                <img src = {cam.image.daylight.preview} alt='Image no found' width='250px' height='175px' margin='3px'/> 
+            </div>
+                ))
+            }
             
+
+        
+        {    
         Country?.Activities === undefined || Country?.Activities?.length === 0 ? <div>
                 <h3>THERE IS NOT TOURIST ACTIVITY FOR THIS COUNTRY</h3>
                 <div>
@@ -80,7 +92,7 @@ return(
                 </div> : 
                 
                 Country?.Activities.map((activity) => (
-                <div className='DetailTA'>
+                <div className={styleD.DetailTA}>
                         <h4>Tourist Activity: {activity.name} </h4>
                         <h4>Difficulty: {selectDifficulty(activity.difficulty)} </h4>
                         <h4>Season: {activity.season} </h4>
@@ -88,12 +100,12 @@ return(
                 </div>
                 ))
                 
-                }
+                
 
-            </div> : <p>Details not found</p>
-        }
+              
+            }
     </div> 
-    </div>
+    {/*</div>*/}
     </>
 )
 }
