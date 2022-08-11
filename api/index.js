@@ -18,12 +18,14 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn, Country } = require('./src/db.js');
+const { conn, Country, CountryCam } = require('./src/db.js');
 const axios = require('axios');
+const apikey = 'NRMOYsLnu0CvCF2LyEWluP40Tpiz9K4l';
 
 //precargando datos de la api
 const getApiInfo = async function (){
  const countriesApi = await axios.get('https://restcountries.com/v3.1/all')
+ 
  await (countriesApi.data.map(e => {
   let {cioc, name, flags, continents, capital, subregion, area, population } = e
   let data ={
@@ -41,12 +43,27 @@ const getApiInfo = async function (){
  }))
 }
 
+const getCamsInfo = async function (){
+  const countriesCam = await axios.get(`https://api.windy.com/api/webcams/v2/list/?key=${apikey}&show=countries`)
+  //console.log("paises", countriesCam.data.result.countries)
+  await (countriesCam.data.result.countries.map(e => {
+   let {id, name } = e
+   let data ={
+           id: id,
+           name: name
+        }
+   CountryCam.findOrCreate({where: data})
+   .catch(error => error)
+  }))
+ }
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  getApiInfo()
+  getApiInfo();
+  getCamsInfo();
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
 
+/*var json = await axios.get(`https://api.windy.com/api/webcams/v2/list/?key=${apikey}&show=countries`);*/

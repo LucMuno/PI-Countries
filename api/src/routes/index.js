@@ -2,7 +2,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
-const {Country, Activity} = require('../db.js');
+const {Country, Activity, CountryCam} = require('../db.js');
 const { Op } = require('sequelize');
 const router = Router();
 
@@ -97,5 +97,50 @@ router.post('/activities', async (req, res, next) => {
             res.status(200).send(allActivities)
         }
     });
+
+    /*router.get('/countryCam', async (req, res) => {
+        const name = req.query.name;
+        let allCountriesCam = await CountryCam.findAll();
+        if(name){
+            let countryName = await allCountriesCam.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
+            countryName.length ?
+            res.status(200).send(countryName) :
+            res.status(404).send('Country not found');
+        }else{
+            res.status(404).send('Country not found');
+            //res.status(200).send(allActivities)
+        }
+    });*/
+
+    router.get('/countryCam', async (req, res) =>{
+        const country = await CountryCam.findAll();
+        console.log("name", country)
+        if (country === null) {
+            console.log('Not found!');
+        } else {
+            return res.json(country)
+        }    
+       
+    })
     
+    /*router.get('/countryCam', async (req, res, next) =>{
+        let name = req.query.name
+            if (name) {    
+                try{
+                    let paQuery = await CountryCam.findOne({
+                        where:{
+                            name: name 
+                        }})    
+                    if (!paQuery.length) {
+                        return res.status(404).json('Country not found')
+                    }else{
+                        return res.json(paQuery)
+                    }
+                }
+                catch(error){
+                    next(error);
+                }
+            }
+       
+        })*/
 module.exports = router;

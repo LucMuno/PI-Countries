@@ -15,6 +15,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      
     },
     flagimg: {
       type: DataTypes.STRING,
