@@ -12,7 +12,7 @@ export function getCountries(){
     }
 }
 export function filterCountriesByContinent(payload){
-    console.log(payload)
+    //console.log(payload)
     return {
         type: 'FILTER_BY_CONTINENT',
         payload
@@ -66,16 +66,17 @@ export function getActivity(){
     }
 }
 export function filterCountryByActivity(payload) {
-    console.log(payload)
+    //console.log(payload)
     return{
         type: 'FILTER_BY_ACTIVITY',
         payload
 }};
+
 export function getDetail(id) {
     return async function (dispatch) {
         try{
             var json = await axios.get("http://localhost:3001/countries/"+id)
-            console.log("pais", json.data)
+            //console.log("pais", json.data)
             return  dispatch({
                 type: 'GET_DETAIL',
                 payload : json.data
@@ -85,17 +86,13 @@ export function getDetail(id) {
 }}};
 
 export function getCams(country){
-    console.log("pais1", typeof(country))
-    var countryCam = country[0] + country[1]
-    //var removed = country.splice(2, 1);
+    console.log("pais1", country)
     return async function(dispatch){
         try{
-            var json = await axios.get(`https://api.windy.com/api/webcams/v2/list/country=${countryCam}?key=${apikey}&show=webcams:image`);
-            console.log("cams",json.data)
+            var json = await axios.get(`https://api.windy.com/api/webcams/v2/list/country=${country}?key=${apikey}&show=webcams:image&categories:beach`);
+            //console.log("cams",json.data)
             var cam1 = json.data.result.webcams;
-            console.log("cam1",cam1)
-            /*var img1 = await axios.get(`https://api.windy.com/api/webcams/v2/list/show=webcams:${cam1}?key=${apikey}`);
-            console.log("img1",img1)*/
+            //console.log("cam1",cam1)
             return dispatch({
                 type: 'GET_CAMS',
                 payload: cam1
@@ -103,5 +100,20 @@ export function getCams(country){
         }catch(e){
             console.log(e)
         }    
+    }
+}
+
+export function getCountryCam(){
+    return async function(dispatch){
+        try{
+            var json = await axios.get("http://localhost:3001/countryCam/")
+            //console.log("resp", json.data)
+            return dispatch({
+                type: 'GET_COUNTRY_CAMS',
+                payload: json.data
+            })
+        }catch(e){
+            console.log(e)
+        }
     }
 }

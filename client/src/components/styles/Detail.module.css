@@ -46,7 +46,7 @@
     align-items:flex-start;
     width:auto;
     height:auto;
-    background-color:aquamarine;
+    background-color:lightsteelblue;
     /*position: relative;*/
 }
 .Data{
@@ -57,4 +57,23 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.card{
+	background-color:#ffffffb9;
+	padding: 10px;
+    width: 280px;
+    height: 300px;
+	display:flex;
+    flex-direction: column;
+	justify-content:space-around;
+	align-items:center;
+	align-content: center;
+	text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(10, 10, 10, 0.959);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+   
 }

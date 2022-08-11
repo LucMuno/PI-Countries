@@ -2,7 +2,7 @@ import style from './styles/Home.module.css'
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCountries,filterCountriesByContinent,getActivity,orderByName,orderByPopulation,filterCountryByActivity } from '../actions';
+import {getCountries,filterCountriesByContinent,getActivity,orderByName,orderByPopulation,filterCountryByActivity, getCountryCam } from '../actions';
 import {Link} from 'react-router-dom';
 import Card from './Card'
 import Paged from './Paged';
@@ -14,6 +14,7 @@ export default function Home(){
     const dispatch = useDispatch()
     const allCountries = useSelector((state) => state.countries)
     const activities = useSelector((state) => state.activities)
+    const allCountriesCams = useSelector((state) => state.countryCams)
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
     const [countriesPerPage, setCountriesPerPage] = useState(10)
@@ -22,18 +23,23 @@ export default function Home(){
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
     const activityName = activities?.map((e) => e.name)
     const values = [...new Set(activityName)]
-    console.log(values)
+    //console.log("Cameras", allCountriesCams)
 
     const paged = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
+
+    useEffect(() => {
+        dispatch(getCountryCam());
+    },[])
+    
     useEffect(() => {
         dispatch(getCountries());
     },[])
     useEffect(() =>{
         dispatch(getActivity());
     },[dispatch]);
-console.log('hola', activities)
+//console.log('hola', activities)
 
 function handleClick(e){
     e.preventDefault();

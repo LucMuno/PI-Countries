@@ -7,17 +7,26 @@ import styleD from './styles/Detail.module.css'
 import style from './styles/Home.module.css'
 
 export default function Detail(props) {
-    const dispatch =  useDispatch();
+const dispatch =  useDispatch();
+const countrywithcam = useSelector((state) => state.countryCams)
+const Country = useSelector((state)=> state.detail); 
+const Cameras = useSelector((state)=> state.cams)
+var country = ""
+countrywithcam.map((e) => {
+    //console.log(e.name,Country.name)
+    if(e.name == Country.name){
+      country = e.id
+    }});
 console.log('prueba', props)
 useEffect(()=>{
     dispatch(getDetail(props.match.params.id)); 
-    dispatch(getCams(props.match.params.id));
-},[dispatch, props.match.params.id]);
+    if(country){
+    dispatch(getCams(country));
+    }
+},[country]);
 
-const Country = useSelector((state)=> state.detail); 
-const Cameras = useSelector((state)=> state.cams)
 console.log("cameras", Cameras)
-console.log(Country.Activities, 'hola');
+//console.log(Country.Activities, 'hola');
 
 function selectDifficulty(value){
     switch (value) {
@@ -73,8 +82,9 @@ return(
             </div>
             {
                 Cameras?.map((cam)=>(
-                    <div className={style.ImgContainer}>
+                    <div className={styleD.card}>
                 <img src = {cam.image.daylight.preview} alt='Image no found' width='250px' height='175px' margin='3px'/> 
+                <h4 className={styleD.Data}>{cam.title}</h4>
             </div>
                 ))
             }
