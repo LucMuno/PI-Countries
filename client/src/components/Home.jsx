@@ -72,7 +72,7 @@ if(!allCountries){
     return <h1>LOADING...</h1>
   }else{
     return(
-        <div>
+        <div className={style.home}>
         
         <nav className={style.navbar}>
         

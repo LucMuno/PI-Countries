@@ -19,24 +19,15 @@
 }
 .Detail {
     margin: 20px;
-    width: 18.2rem;
-    height: 500px;
+    width: 800px;
+    height: 250px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content:space-evenly;
-    background-color: rgba(255, 255, 255, 0.376);
+    
 }
-.DetailTA {
-    margin: 20px;
-    width: 18.2rem;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:space-evenly;
-    background-color: rgba(255, 255, 255, 0.376);
-}
+
 
 .DetailComp{
     display: flex;
@@ -44,36 +35,68 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items:flex-start;
-    width:auto;
-    height:auto;
-    background-color:lightsteelblue;
+    width:100%;
+    height:100vh;
+    background-color: hsl(207, 26%, 17%);
     /*position: relative;*/
 }
 .Data{
+    display: flex;
+    flex-direction: row;
     padding: 0;
     margin: 0;
+    color: aliceblue;
 }
 .ImgContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.card{
-	background-color:#ffffffb9;
-	padding: 10px;
-    width: 280px;
-    height: 300px;
-	display:flex;
+
+.DataContainer{
+    display: flex;
     flex-direction: column;
-	justify-content:space-around;
-	align-items:center;
-	align-content: center;
-	text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px rgba(10, 10, 10, 0.959);
-    overflow: hidden;
+    height: 250px;
+    width: 400px;
+    padding: 20px;
+    margin-left: 50px;
+    justify-content: space-around;
+}
+.Card {
+    display: flex; 
+    flex-direction: column; 
+    width:250px; 
+    justify-content: center; 
+    align-items: center;
+    background-color:  hsl(209, 23%, 22%);
     margin: 20px;
-    text-align: center;
-    transition: all 0.25s;
+    padding-top: 0;
+    border-radius: 10px;
+    
+    
+}
+
+.TextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70px;
+    justify-content:space-around;
+    padding-top: 10px;
+    padding-bottom: 5px;
    
+}
+.Text{
+    padding-top: 1px;
+    color: aliceblue;
+    
+}
+
+
+.ImageContainer img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0;
+    width: 250px;
+    height: 175px;
 }

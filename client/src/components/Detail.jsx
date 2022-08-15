@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, getCams } from "../actions";
 import { useEffect } from "react";
-import styleD from './styles/Detail.module.css'
-import style from './styles/Home.module.css'
+import style from './styles/Detail.module.css'
+//import style from './styles/Home.module.css'
 
 export default function Detail(props) {
 const dispatch =  useDispatch();
@@ -63,35 +63,44 @@ function selectDuration(value){
 
 return(
     <>
+    <div className={style.DetailComp}>
+    {/*<div className={styleD.Detail}>*/}
      <div> 
         <Link to='/home'><button className={style.btnAdmin}>BACK TO HOME</button></Link>
     </div>
-    <div className={styleD.DetailComp}>
-    {/*<div className={styleD.Detail}>*/}
         
             
-            <div className={styleD.Detail}>
-            <h1>{Country.name}</h1>
-            <img src = {Country.flagimg} alt='Image no found' width='250px' height='175px' margin='3px'/>
-            <h2 className={styleD.Data}>ID: {Country.id}</h2>
-            <h2 className={styleD.Data}>Continent: {Country.continent}</h2>
-            <h3 className={styleD.Data} alt='Capital not found'>Capital: {Country.capital}</h3>
-            <h4 className={styleD.Data} alt='Subregion not found'>Subregion: {Country.subregion}</h4>
-            <h5 className={styleD.Data}>Area: {Country.area} km²</h5>
-            <h5 className={styleD.Data}>Population: {Country.population} inhabitants</h5>
+            <div className={style.Detail}>
+             <div>   
+            <img src = {Country.flagimg} alt='Image no found' width='400px' height='250px' margin='3px'/>
             </div>
+            <div className={style.DataContainer}>
+            <h1 className={style.Data}>{Country.name}</h1>
+            
+            <h3 className={style.Data}>Continent: {Country.continent}</h3>
+            <h3 className={style.Data} alt='Capital not found'>Capital: {Country.capital}</h3>
+            <h4 className={style.Data} alt='Subregion not found'>Subregion: {Country.subregion}</h4>
+            <h4 className={style.Data}>Area: {Country.area} km²</h4>
+            <h4 className={style.Data}>Population: {Country.population} inhabitants</h4>
+            </div>
+            </div>
+            <div className={style.ImgContainer}>
             {
                 Cameras?.map((cam)=>(
-                    <div className={styleD.card}>
-                <img src = {cam.image.daylight.preview} alt='Image no found' width='250px' height='175px' margin='3px'/> 
-                <h4 className={styleD.Data}>{cam.title}</h4>
+                    <div className={style.Card}>
+                <div className={style.ImageContainer}>        
+                <img src = {cam.image.daylight.preview} alt='Image no found' /> 
+                </div>
+                <div className={style.TextContainer}>
+                <h5 className={style.Data}>{cam.title}</h5>
+                </div>
             </div>
                 ))
             }
-            
+            </div>
 
         
-        {    
+       {/*} {    
         Country?.Activities === undefined || Country?.Activities?.length === 0 ? <div>
                 <h3>THERE IS NOT TOURIST ACTIVITY FOR THIS COUNTRY</h3>
                 <div>
@@ -113,7 +122,7 @@ return(
                 
 
               
-            }
+            }*/}
     </div> 
     {/*</div>*/}
     </>
