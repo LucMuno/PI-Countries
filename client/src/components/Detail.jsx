@@ -2,19 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, getCams } from "../actions";
-import { useEffect } from "react";
-import style from './styles/Detail.module.css'
+import { useEffect, useState } from "react";
+import style from './styles/Detail.module.css';
+import PuffLoader from "react-spinners/PuffLoader";
 //import style from './styles/Home.module.css'
 
 export default function Detail(props) {
 const dispatch =  useDispatch();
 const countrywithcam = useSelector((state) => state.countryCams)
 const Country = useSelector((state)=> state.detail); 
-const Cameras = useSelector((state)=> state.cams)
+const Cameras = useSelector((state)=> state.cams);
+const [loading, setLoading] = useState(false);
+const override = {
+    display: "block",
+    margin: "0 auto",
+};
 var country = ""
 countrywithcam.map((e) => {
     //console.log(e.name,Country.name)
-    if(e.name == Country.name){
+    if(e.name === Country.name){
       country = e.id
     }});
 console.log('prueba', props)
@@ -23,8 +29,14 @@ useEffect(()=>{
     if(country){
     dispatch(getCams(country));
     }
+    
 },[country]);
-
+useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+        setLoading(false)
+    },1500)
+},[])
 console.log("cameras", Cameras)
 //console.log(Country.Activities, 'hola');
 
@@ -84,6 +96,11 @@ return(
             <h4 className={style.Data}>Population: {Country.population} inhabitants</h4>
             </div>
             </div>
+            {
+                    loading ?
+                    <PuffLoader
+                    color={"#ffffff"} loading={loading} cssOverride={override} size={300} />
+                    :
             <div className={style.ImgContainer}>
             {
                 Cameras?.map((cam)=>(
@@ -99,7 +116,7 @@ return(
             }
             </div>
 
-        
+            }
        {/*} {    
         Country?.Activities === undefined || Country?.Activities?.length === 0 ? <div>
                 <h3>THERE IS NOT TOURIST ACTIVITY FOR THIS COUNTRY</h3>

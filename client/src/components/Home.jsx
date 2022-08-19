@@ -1,12 +1,16 @@
 import style from './styles/Home.module.css'
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCountries,filterCountriesByContinent,getActivity,orderByName,orderByPopulation,filterCountryByActivity, getCountryCam } from '../actions';
 import {Link} from 'react-router-dom';
 import Card from './Card'
 import Paged from './Paged';
 import SearchBar from './SearchBar';
+import PuffLoader from "react-spinners/PuffLoader";
+import { FaBars, FaTimes } from 'react-icons/fa';
+import classnames from 'classnames';
+//import Navbar from './NavBar';
 
 
 
@@ -18,17 +22,30 @@ export default function Home(){
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
     const [countriesPerPage, setCountriesPerPage] = useState(10)
+    const [loading, setLoading] = useState(false);
     const indexOfLastCountry =  currentPage * countriesPerPage 
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
     const activityName = activities?.map((e) => e.name)
     const values = [...new Set(activityName)]
+    const navRef = useRef();
+    const showNavBar = () => {
+        navRef.current.classList.toggle(style["responsive_nav"])
+    }
     //console.log("Cameras", allCountriesCams)
-
+    const override = {
+        display: "block",
+        margin: "0 auto",
+    };
     const paged = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
-
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        },1500)
+    },[])
     useEffect(() => {
         dispatch(getCountryCam());
     },[])
@@ -68,13 +85,34 @@ function handleFilterActivity(e){
     dispatch(filterCountryByActivity(e.target.value))
 }
 
-if(!allCountries){
-    return <h1>LOADING...</h1>
-  }else{
+
     return(
         <div className={style.home}>
-        
-        <nav className={style.navbar}>
+            <header className={style.header}>
+            <nav className={style.navBar} ref={navRef}>
+                <a className={style.select} href='/home/'>Home</a>
+                <select className={style.select} onChange={e => handleSortPopulation(e)}>
+            <option hidden selected>Filter by Population</option>
+                <option className={style.Option} value='hip'>Higher Population</option>
+                <option className={style.Option} value='smp'>Smaller Population</option>
+            </select>
+            
+            <a>
+            <select className={style.select} onChange={e => handleFilterContinent(e)}>
+            <option hidden selected>Filter by Continent</option>
+                <option className={style.Option} value='All'>All</option>
+                <option className={style.Option} value='Africa'>Africa</option>
+                <option className={style.Option} value='America'>America</option>
+                <option className={style.Option} value='Asia'>Asia</option>
+                <option className={style.Option} value='Europe'>Europe</option>
+                <option className={style.Option} value='Oceania'>Oceania</option>
+            </select>
+            </a>
+            <button className={classnames(style.navBtn, style.navCloseBtn)} onClick={showNavBar}><FaTimes/></button>    
+            </nav>
+            <button className={style.navBtn} onClick={showNavBar}><FaBars/></button>
+            </header> 
+        {/*<nav className={style.navbar}>
         
         
         <div>
@@ -118,7 +156,8 @@ if(!allCountries){
                   <div>
             <Link to='/activities'><button className={style.btnAdmin}>CREATE TOURIST ACTIVITIES</button></Link>
         </div>         
-            </nav>      
+                       </nav>   */}
+               
             <div>      
             <Paged
                 countriesPerPage={countriesPerPage}
@@ -128,8 +167,13 @@ if(!allCountries){
             </div>
             <SearchBar/>
             
+                {
+                    loading ?
+                    <PuffLoader
+                    color={"#ffffff"} loading={loading} cssOverride={override} size={300} />
+                    :
             <div className={style.container}>
-            {currentCountries?.map((el)=>{
+            {currentCountries.map((el)=>{
                 return (
                     <div>
                         <Link to={'/home/' + el.id} style={{textDecoration:"none", color:"black"}}>
@@ -139,8 +183,9 @@ if(!allCountries){
                 )
             })}
             </div>
-          
+            }
         </div>        
+
     )
-   }  
+     
 }
