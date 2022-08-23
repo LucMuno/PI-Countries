@@ -48,9 +48,11 @@ router.get('/countries', async (req, res, next) =>{
         })
         return res.send(ap)
         }
+       
     catch(error){
         next(error)
     }
+    console.log("detalle",ap)
     })
 
 router.post('/activities', async (req, res, next) => {
@@ -114,7 +116,7 @@ router.post('/activities', async (req, res, next) => {
 
     router.get('/countryCam', async (req, res) =>{
         const country = await CountryCam.findAll();
-        console.log("name", country)
+        //console.log("name", country)
         if (country === null) {
             console.log('Not found!');
         } else {
