@@ -86,7 +86,7 @@ export function getDetail(id) {
 }}};
 
 export function getCams(country){
-    console.log("pais1", country)
+    //console.log("pais1", country)
     return async function(dispatch){
         try{
             var json = await axios.get(`https://api.windy.com/api/webcams/v2/list/country=${country}?key=${apikey}&show=webcams:image&categories:beach`);

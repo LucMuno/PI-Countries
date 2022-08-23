@@ -1,10 +1,10 @@
 
 .home{
 	background-color:hsl(207, 26%, 17%);
-	background-size:auto;
+	background-size:cover;
 	margin-top: 0;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	
 }
 .Text{
@@ -39,7 +39,7 @@
     justify-content: space-around;
 	background-color: hsl(207, 26%, 17%);
 	width:100%;
-    height:100vh;
+    height:100%;
     align-items: flex-start;
     align-content: stretch;
 	
@@ -87,16 +87,15 @@
  }
  
  .inputSearch {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	font-family: arial;
+	margin: 5px;
+	/*margin-bottom: 5px;
+	font-family: arial;*/
 	color: black !important;
 	font-size: 12px;
-	box-shadow: 1px 1px 4px #B3B3B3;
 	padding: 8px 10px;
-	border-radius: 6px;
+	border-radius: 5px;
 	border: 2px solid #363636;
-	background: FFF7E8;
+	background-color: #b3b3b3;
 	
   }
   
@@ -126,6 +125,7 @@
 }
 .select:hover {
 	color: aqua;
+	cursor: pointer;
 }
 .navBtn{
 	padding: 5px;
@@ -136,12 +136,17 @@
 	color: #B3B3B3;
 	visibility: hidden;
 	opacity: 0;
+	top: 2rem;
+	right: 2rem;
+}
+.navBtn:hover {
+	color: aqua;
 }
 .header{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 80px;
+	height: 60px;
 	padding: 0 2rem;
 	background-color: hsl(207, 26%, 17%);
 	color: #B3B3B3;
@@ -172,8 +177,7 @@
 	}
 	.navCloseBtn{
 		position: absolute;
-		top: 2rem;
-		right: 2rem;
+		
 	}
 	.select{
 		font-size: 1.5rem;

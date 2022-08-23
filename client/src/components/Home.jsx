@@ -8,8 +8,11 @@ import Card from './Card'
 import Paged from './Paged';
 import SearchBar from './SearchBar';
 import PuffLoader from "react-spinners/PuffLoader";
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSearch } from 'react-icons/fa';
+import { GiEarthAmerica } from 'react-icons/gi';
 import classnames from 'classnames';
+import ReactPaginate from 'react-paginate';
+import './styles/Pagination.css'
 //import Navbar from './NavBar';
 
 
@@ -17,18 +20,27 @@ import classnames from 'classnames';
 export default function Home(){
     const dispatch = useDispatch()
     const allCountries = useSelector((state) => state.countries)
+    const [pageNumber, setPageNumber] = useState(0)
+    const countriesPerPage = 10
+    const pagesVisited = pageNumber * countriesPerPage
+    const displayCountries = allCountries.slice(pagesVisited, pagesVisited + countriesPerPage)
+       
     const activities = useSelector((state) => state.activities)
     const allCountriesCams = useSelector((state) => state.countryCams)
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
-    const [countriesPerPage, setCountriesPerPage] = useState(10)
+    //const [countriesPerPage, setCountriesPerPage] = useState(8)
     const [loading, setLoading] = useState(false);
-    const indexOfLastCountry =  currentPage * countriesPerPage 
+    /*const indexOfLastCountry =  currentPage * countriesPerPage 
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
-    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
+    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)*/
+    const pageCount = Math.ceil(allCountries.length / countriesPerPage)
     const activityName = activities?.map((e) => e.name)
     const values = [...new Set(activityName)]
     const navRef = useRef();
+    const changePage = ({selected}) => {
+        setPageNumber(selected);
+    }
     const showNavBar = () => {
         navRef.current.classList.toggle(style["responsive_nav"])
     }
@@ -90,6 +102,7 @@ function handleFilterActivity(e){
         <div className={style.home}>
             <header className={style.header}>
             <nav className={style.navBar} ref={navRef}>
+                <a><GiEarthAmerica size={30}/></a> 
                 <a className={style.select} href='/home/'>Home</a>
                 <select className={style.select} onChange={e => handleSortPopulation(e)}>
             <option hidden selected>Filter by Population</option>
@@ -108,9 +121,10 @@ function handleFilterActivity(e){
                 <option className={style.Option} value='Oceania'>Oceania</option>
             </select>
             </a>
-            <button className={classnames(style.navBtn, style.navCloseBtn)} onClick={showNavBar}><FaTimes/></button>    
+            <a className={classnames(style.navBtn, style.navCloseBtn)} onClick={showNavBar}><FaTimes/></a>    
             </nav>
             <button className={style.navBtn} onClick={showNavBar}><FaBars/></button>
+            <SearchBar/>
             </header> 
         {/*<nav className={style.navbar}>
         
@@ -158,14 +172,14 @@ function handleFilterActivity(e){
         </div>         
                        </nav>   */}
                
-            <div>      
+           {/*} <div>      
             <Paged
                 countriesPerPage={countriesPerPage}
                 allCountries={allCountries.length}
                 paged={paged}
                 />
-            </div>
-            <SearchBar/>
+                    </div>*/}
+            
             
                 {
                     loading ?
@@ -173,7 +187,7 @@ function handleFilterActivity(e){
                     color={"#ffffff"} loading={loading} cssOverride={override} size={300} />
                     :
             <div className={style.container}>
-            {currentCountries.map((el)=>{
+            {displayCountries?.map((el)=>{
                 return (
                     <div>
                         <Link to={'/home/' + el.id} style={{textDecoration:"none", color:"black"}}>
@@ -182,8 +196,22 @@ function handleFilterActivity(e){
                     </div>
                 )
             })}
+             
             </div>
             }
+            <div>
+            <ReactPaginate
+                previousLabel={"< Previous"}
+                nextLabel={"Next >"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"paginationBttns"}
+                previousLinkClassName={"previousBttn"}
+                nextLinkClassName={"nextBttn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+            />
+            </div>
         </div>        
 
     )

@@ -5,6 +5,7 @@ import { getDetail, getCams } from "../actions";
 import { useEffect, useState } from "react";
 import style from './styles/Detail.module.css';
 import PuffLoader from "react-spinners/PuffLoader";
+import { FaArrowLeft } from 'react-icons/fa';
 //import style from './styles/Home.module.css'
 
 export default function Detail(props) {
@@ -13,6 +14,7 @@ const countrywithcam = useSelector((state) => state.countryCams)
 const Country = useSelector((state)=> state.detail); 
 const Cameras = useSelector((state)=> state.cams);
 const [loading, setLoading] = useState(false);
+console.log("detalle", Country)
 const override = {
     display: "block",
     margin: "0 auto",
@@ -77,14 +79,13 @@ return(
     <>
     <div className={style.DetailComp}>
     {/*<div className={styleD.Detail}>*/}
-     <div> 
-        <Link to='/home'><button className={style.btnAdmin}>BACK TO HOME</button></Link>
-    </div>
+     
         
             
+            <Link to='/home'><button className={style.BackButton}><FaArrowLeft/> BACK</button></Link>
             <div className={style.Detail}>
              <div>   
-            <img src = {Country.flagimg} alt='Image no found' width='400px' height='250px' margin='3px'/>
+            <img src = {Country.flagimg} alt='Image no found' width='300px' height='200px' margin='3px'/>
             </div>
             <div className={style.DataContainer}>
             <h1 className={style.Data}>{Country.name}</h1>

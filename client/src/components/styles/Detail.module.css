@@ -2,21 +2,20 @@
 .BackButton{
     position:relative;
     text-decoration:none;
-    font-weight: 600;
+    font-weight: 200;
     font-size: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     color:#ffffff;
     padding-top:10px;
     padding-bottom:10px;
     padding-left:10px;
     padding-right:10px;
-    background-color: transparent;
-    border-color: #2ed9e9;
-    border-width: 3px;
-    border-style: solid;
+    background-color: hsl(209, 23%, 22%);
+    border-style: none;
 }
 .BackButton:hover {
-    background-color:#0eabe9;
-    transition:0.5s;
+    color: aqua;
+    cursor: pointer;
 }
 .Detail {
     margin: 20px;
@@ -35,10 +34,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items:flex-start;
+    align-items:center;
     width:100%;
-    height:100vh;
+    height:100%;
     background-color: hsl(207, 26%, 17%);
+    background-size:cover;
+    background-repeat: repeat;
     /*position: relative;*/
 }
 .Data{
