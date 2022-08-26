@@ -27,7 +27,8 @@ const getApiInfo = async function (){
  const countriesApi = await axios.get('https://restcountries.com/v3.1/all')
  
  await (countriesApi.data.map(e => {
-  let {cioc, name, flags, continents, capital, subregion, area, population } = e
+  let {cioc, name, flags, continents, capital, subregion, area, population, currencies, languages, borders, maps } = e
+  //console.log("data", e)
   let data ={
           id: cioc,
           name: name.common,
@@ -37,6 +38,10 @@ const getApiInfo = async function (){
           subregion: subregion ? subregion : 'No Subregion Found',
           area: Math.round(area),
           population: population,
+          currencies: currencies,
+          languages: languages,
+          borders: borders,
+          maps: maps.googleMaps
   }
   Country.findOrCreate({where: data})
   .catch(error => error)

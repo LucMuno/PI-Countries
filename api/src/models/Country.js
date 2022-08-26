@@ -41,6 +41,22 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.INTEGER,
       allowNull: true,
+    },
+    currencies: {
+      type: DataTypes.JSON,
+      allowNull: true,
+    },
+    languages: {
+      type: DataTypes.JSON,
+      allowNull: true,
+    },
+    borders: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
+    maps: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   });
 };
