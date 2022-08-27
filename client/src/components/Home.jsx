@@ -124,7 +124,7 @@ function handleFilterActivity(e){
             <a className={classnames(style.navBtn, style.navCloseBtn)} onClick={showNavBar}><FaTimes/></a>    
             </nav>
             <button className={style.navBtn} onClick={showNavBar}><FaBars/></button>
-            <SearchBar/>
+            <SearchBar setCountries={allCountries}/>
             </header> 
         {/*<nav className={style.navbar}>
         

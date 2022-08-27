@@ -74,7 +74,21 @@ function selectDuration(value){
            console.log('No duration'); 
     }
 }
-
+function setCurrencies(value){
+    var result = [];
+    for(const property in value) {
+        result.push(value[property].name + " -")
+    }
+    return result;
+}
+function setLanguages(value){
+    var result = [];
+    for(const property in value) {
+        result.push(value[property] + " -")
+    }
+    return result;
+}
+console.log("borders", Country.borders)
 return(
     <>
     <div className={style.DetailComp}>
@@ -84,6 +98,7 @@ return(
             
             <Link to='/home'><button className={style.BackButton}><FaArrowLeft/> BACK</button></Link>
             <div className={style.Detail}>
+               
              <div>   
             <img src = {Country.flagimg} alt='Image no found' width='300px' height='200px' margin='3px'/>
             </div>
@@ -95,6 +110,29 @@ return(
             <h4 className={style.Data} alt='Subregion not found'>Subregion: {Country.subregion}</h4>
             <h4 className={style.Data}>Area: {Country.area} km²</h4>
             <h4 className={style.Data}>Population: {Country.population} inhabitants</h4>
+            <h4 className={style.Data}>Currencies: {setCurrencies(Country.currencies)}</h4>
+            <h4 className={style.Data}>Languages: {setLanguages(Country.languages)}</h4>
+            {/*<button className={style.BackButton}>Borders: {Country.borders}</button>*/}
+            
+            </div>
+            <div className={style.BordersContainer}>
+            <div>    
+            <h2 className={style.Data}>Bordering Countries</h2>
+            </div>
+            <div className={style.BorderCountriesContainer}>
+                {
+                    Country.borders ?
+                    Country.borders?.map((country) =>(
+                        <div>
+                        <button className={style.BackButton}>{country}</button>
+                        </div>
+
+                    ))
+                    
+                    
+                    : <span>Country without borders</span>
+                }
+            </div>    
             </div>
             </div>
             {

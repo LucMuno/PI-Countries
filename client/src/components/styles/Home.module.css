@@ -183,3 +183,53 @@
 		font-size: 1.5rem;
 	}
 }
+.dataResult {
+    top: 45px;
+	
+	right: 30px;
+    width: 200px;
+    height: auto;
+	max-height: 200px;
+    background-color: hsl(209, 23%, 22%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
+    background-color: hsl(209, 23%, 22%);
+    border: 2px;
+    border-color: black;
+    border-radius: 2px;
+    font-size: 14px;
+    padding: 5px;
+    position: absolute;
+    z-index: 5;
+        
+}
+.dataResult::-webkit-scrollbar {
+    display: none;
+}
+.dataItem .dataResult{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+       
+}
+.dataItem {
+    display: flex;
+    flex-direction: row;
+    justify-content:baseline;
+}
+
+.dataItem:hover{
+    background-color: rgba(198, 190, 190, 0.595);
+}
+input:focus {
+    outline: none;
+}
+.imagen {
+    width: 20px;
+    height: 15px;
+}
+.title {
+    margin-left: 10px;
+}

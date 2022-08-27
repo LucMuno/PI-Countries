@@ -16,6 +16,7 @@
 .BackButton:hover {
     color: aqua;
     cursor: pointer;
+    background-color:hsla(208, 21%, 34%, 0.984) ;
 }
 .Detail {
     margin: 20px;
@@ -48,6 +49,7 @@
     padding: 0;
     margin: 0;
     color: aliceblue;
+    font-weight: 100;
 }
 .ImgContainer{
     display: flex;
@@ -101,4 +103,25 @@
     padding: 0;
     width: 250px;
     height: 175px;
+}
+.BordersContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    height: 175px;
+    flex-wrap: wrap;
+}
+/*.BordersTitle {
+    display: flex;
+    justify-content: center;
+    top: 0
+
+}*/
+.BorderCountriesContainer {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 160px;
+    flex-wrap: wrap;
 }
