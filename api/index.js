@@ -38,10 +38,10 @@ const getApiInfo = async function (){
           subregion: subregion ? subregion : 'No Subregion Found',
           area: Math.round(area),
           population: population,
-          currencies: currencies,
-          languages: languages,
-          borders: borders,
-          maps: maps.googleMaps
+          currencies: currencies ? currencies : 'No currencies Found',
+          languages: languages ? languages : 'No languages Found',
+          borders: borders ? borders : ['Country without borders'],
+          maps: maps? maps.googleMaps : 'No map Found',
   }
   Country.findOrCreate({where: data})
   .catch(error => error)
@@ -63,7 +63,7 @@ const getCamsInfo = async function (){
  }
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   getApiInfo();
   getCamsInfo();
   server.listen(3001, () => {
