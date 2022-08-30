@@ -27,17 +27,17 @@ const getApiInfo = async function (){
  const countriesApi = await axios.get('https://restcountries.com/v3.1/all')
  
  await (countriesApi.data.map(e => {
-  let {cioc, name, flags, continents, capital, subregion, area, population, currencies, languages, borders, maps } = e
+  let {cca3, name, flags, continents, capital, subregion, area, population, currencies, languages, borders, maps } = e
   //console.log("data", e)
   let data ={
-          id: cioc,
+          id: cca3,
           name: name.common,
           flagimg: flags.png,
           continent: continents[0].split(' ').length >1 ? continents[0].split(' ')[1]: continents[0],
           capital: capital ? capital[0] : 'No Capital Found',
           subregion: subregion ? subregion : 'No Subregion Found',
-          area: Math.round(area),
-          population: population,
+          area: Math.round(area).toLocaleString('en-US'),
+          population: population.toLocaleString('en-US'),
           currencies: currencies ? currencies : 'No currencies Found',
           languages: languages ? languages : 'No languages Found',
           borders: borders ? borders : ['Country without borders'],

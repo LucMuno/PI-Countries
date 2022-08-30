@@ -35,11 +35,11 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     area: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     population: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     currencies: {
