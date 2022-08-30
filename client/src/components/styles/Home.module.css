@@ -46,7 +46,7 @@
 }
 
    
-.btnAdmin {
+/*.btnAdmin {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	font-family: arial;
@@ -66,7 +66,7 @@
 	background: #B3B3B3;
 	background: linear-gradient(to top, #686868, #CECECE);
 	
-  }
+  }*/
   .Option {
     background-color: hsl(207, 26%, 17%);
 	/*border-color: hsl(207, 26%, 17%);*/

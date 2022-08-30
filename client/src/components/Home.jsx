@@ -109,7 +109,13 @@ function handleFilterActivity(e){
                 <option className={style.Option} value='hip'>Higher Population</option>
                 <option className={style.Option} value='smp'>Smaller Population</option>
             </select>
-            
+            <a>
+            <select className={style.select} onChange={e => handleSort(e)}>
+            <option hidden selected>Filter by Alphabetical Order</option>
+                <option className={style.Option} value='asc'>A-Z</option>
+                <option className={style.Option} value='desc'>Z-A</option>
+            </select>
+            </a>
             <a>
             <select className={style.select} onChange={e => handleFilterContinent(e)}>
             <option hidden selected>Filter by Continent</option>

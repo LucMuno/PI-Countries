@@ -10,6 +10,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 export default function Detail(props) {
 const dispatch =  useDispatch();
+const allCountries = useSelector((state) => state.countries)
 const countrywithcam = useSelector((state) => state.countryCams)
 const Country = useSelector((state)=> state.detail); 
 const Cameras = useSelector((state)=> state.cams);
@@ -32,7 +33,7 @@ useEffect(()=>{
     dispatch(getCams(country));
     }
     
-},[country]);
+},[props, country]);
 useEffect(() => {
     setLoading(true)
     setTimeout(() => {
@@ -88,6 +89,24 @@ function setLanguages(value){
     }
     return result;
 }
+var bordersName = [];
+function setBorders(value){
+    console.log("valor", value)
+  if(value != undefined){  
+  for(var i=0; i<value.length; i++){
+    allCountries.map((e) => {
+        if(e.id == value[i]){
+            bordersName.push({id: value[i], name: e.name})
+        }
+    })
+   }
+   console.log("op", bordersName)
+   return bordersName;
+  }
+}
+
+    
+
 console.log("borders", Country.borders)
 return(
     <>
@@ -96,22 +115,25 @@ return(
      
         
             
-            <Link to='/home'><button className={style.BackButton}><FaArrowLeft/> BACK</button></Link>
+            <Link to='/home'><button className={style.BackButton}><FaArrowLeft/> HOME</button></Link>
             <div className={style.Detail}>
-               
+            <a href={Country.maps} target="_blank">
+                <h3>Google Maps</h3>
+            </a>    
+              
              <div>   
             <img src = {Country.flagimg} alt='Image no found' width='300px' height='200px' margin='3px'/>
             </div>
             <div className={style.DataContainer}>
             <h1 className={style.Data}>{Country.name}</h1>
             
-            <h3 className={style.Data}>Continent: {Country.continent}</h3>
-            <h3 className={style.Data} alt='Capital not found'>Capital: {Country.capital}</h3>
-            <h4 className={style.Data} alt='Subregion not found'>Subregion: {Country.subregion}</h4>
-            <h4 className={style.Data}>Area: {Country.area} km²</h4>
-            <h4 className={style.Data}>Population: {Country.population} inhabitants</h4>
-            <h4 className={style.Data}>Currencies: {setCurrencies(Country.currencies)}</h4>
-            <h4 className={style.Data}>Languages: {setLanguages(Country.languages)}</h4>
+            <h3 className={style.Data}>Continent: <h3 className={style.Data2}> {Country.continent}</h3></h3>
+            <h3 className={style.Data} alt='Capital not found'>Capital:<h3 className={style.Data2}> {Country.capital}</h3></h3>
+            <h4 className={style.Data} alt='Subregion not found'>Subregion: <h4 className={style.Data2}> {Country.subregion}</h4></h4>
+            <h4 className={style.Data}>Area: <h4 className={style.Data2}> {Country.area} km²</h4></h4>
+            <h4 className={style.Data}>Population: <h4 className={style.Data2}> {Country.population} inhabitants</h4></h4>
+            <h4 className={style.Data}>Currencies: <h4 className={style.Data2}>{setCurrencies(Country.currencies)}</h4></h4>
+            <h4 className={style.Data}>Languages: <h4 className={style.Data2}>{setLanguages(Country.languages)}</h4></h4>
             {/*<button className={style.BackButton}>Borders: {Country.borders}</button>*/}
             
             </div>
@@ -119,18 +141,22 @@ return(
             <div>    
             <h2 className={style.Data}>Bordering Countries</h2>
             </div>
+            
             <div className={style.BorderCountriesContainer}>
                 {
-                    Country.borders ?
-                    Country.borders?.map((country) =>(
+                    (Country.borders != "Country without borders") ?
+                    setBorders(Country.borders)?.map((country) =>{
+                        return(
                         <div>
-                        <button className={style.BackButton}>{country}</button>
+                        <Link to={'/home/' + country.id} style={{textDecoration:"none", color:"black"}}>
+                        <button className={style.BorderButton}>{country.name}</button>
+                        </Link>
                         </div>
 
-                    ))
+                    )})
                     
                     
-                    : <span>Country without borders</span>
+                    : <span className={style.span}>Country without borders</span>
                 }
             </div>    
             </div>
