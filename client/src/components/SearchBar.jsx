@@ -9,17 +9,10 @@ import {Link} from 'react-router-dom';
 
 export default function SearchBar({setCountries}){
     const dispatch= useDispatch();
-    //const countries = useSelector((state) => state.countries);
     const [name, setName] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     console.log("filter", setCountries)
-    /*function handleInputChange(e){
-        e.preventDefault()
-        setName(e.target.value)
-    }*/
-    /*useEffect(() => {
-        dispatch(getCountries());
-    },[])*/
+    
     function handleInputChange(e) {
         const searchWord = e.target.value;
         console.log("find",searchWord)
@@ -35,16 +28,7 @@ export default function SearchBar({setCountries}){
         }
         
       }
-    /*function handleSubmit(e){
-        e.preventDefault()
-        if (name !== ""){
-            dispatch(getNameCountries(name));
-            setName("");
-        } else {
-            alert("Input a correct name");
-        };
     
-    }*/
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(getNameCountries(name));
@@ -55,9 +39,9 @@ export default function SearchBar({setCountries}){
             title: "Oops...",
             text: "No se encontró el pais!",
           });
-          //alert("Escriba el producto que desea buscar");
+          
         }
-        //setPage(1)
+        
         setName("");
         setFilteredData([]);
       }
@@ -77,13 +61,14 @@ export default function SearchBar({setCountries}){
         <div className={style.dataResult}>
           {filteredData.map((el) => {
           return(
-            <a className={style.dataItem}>
-              <Link style={{textDecoration:"none", color: "white", padding:"10px"}} to={`/home/${el.id}`}>
+            
+                <a className={style.dataItem}>
+            <Link style={{textDecoration:"none", color: "white", padding:"8px"}} to={`/home/${el.id}`}>
                <span><img className={style.imagen} src={el.flagimg}/></span>
               <span className={style.title}>{el.name}</span>
              </Link> 
-            
             </a>
+           
           )
           })}
         </div>      

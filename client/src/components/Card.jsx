@@ -1,21 +1,17 @@
 import React from "react";
 import style from './styles/Card.module.css';
 import { FcMultipleCameras } from 'react-icons/fc';
-import { getCountryCam} from "../actions";
-import {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function Card({flagimg, name, continent}){
   
   const countrywithcam = useSelector((state) => state.countryCams)
-  //console.log("aqui", countrywithcam)
   var country = {}
   countrywithcam.map((e) => {
-    //console.log(e.name,name)
     if(e.name == name){
       country = e
     }});
-  //console.log("paisconCam", country,name)
+  
     return (
       <div className={style.Card}>
         <div className={style.ImageContainer}>

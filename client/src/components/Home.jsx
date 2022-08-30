@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getCountries,filterCountriesByContinent,getActivity,orderByName,orderByPopulation,filterCountryByActivity, getCountryCam } from '../actions';
 import {Link} from 'react-router-dom';
 import Card from './Card'
-import Paged from './Paged';
 import SearchBar from './SearchBar';
 import PuffLoader from "react-spinners/PuffLoader";
 import { FaBars, FaTimes, FaSearch } from 'react-icons/fa';
@@ -29,11 +28,7 @@ export default function Home(){
     const allCountriesCams = useSelector((state) => state.countryCams)
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
-    //const [countriesPerPage, setCountriesPerPage] = useState(8)
     const [loading, setLoading] = useState(false);
-    /*const indexOfLastCountry =  currentPage * countriesPerPage 
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
-    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)*/
     const pageCount = Math.ceil(allCountries.length / countriesPerPage)
     const activityName = activities?.map((e) => e.name)
     const values = [...new Set(activityName)]
@@ -68,7 +63,6 @@ export default function Home(){
     useEffect(() =>{
         dispatch(getActivity());
     },[dispatch]);
-//console.log('hola', activities)
 
 function handleClick(e){
     e.preventDefault();
@@ -178,13 +172,7 @@ function handleFilterActivity(e){
         </div>         
                        </nav>   */}
                
-           {/*} <div>      
-            <Paged
-                countriesPerPage={countriesPerPage}
-                allCountries={allCountries.length}
-                paged={paged}
-                />
-                    </div>*/}
+          
             
             
                 {

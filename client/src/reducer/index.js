@@ -55,19 +55,19 @@ function rootReducer(state = initialState, action){
             case 'ORDER_BY_POPULATION':
                 let sortedArr2 = action.payload === 'hip' ?
                     state.countries.sort(function(a,b){
-                        if(a.population > b.population){
+                        if(Number(a.population.replace(/[^0-9]/g, "")) > Number(b.population.replace(/[^0-9]/g, ""))){
                             return -1;
                         }
-                        if(b.population > a.population){
+                        if(Number(b.population.replace(/[^0-9]/g, "")) > Number(a.population.replace(/[^0-9]/g, ""))){
                             return 1;
                         }
                         return 0;
                     }) :
                     state.countries.sort(function(a,b){
-                        if(a.population > b.population){
+                        if(Number(a.population.replace(/[^0-9]/g, "")) > Number(b.population.replace(/[^0-9]/g, ""))){
                             return 1;
                         }
-                        if(b.population > a.population){
+                        if(Number(b.population.replace(/[^0-9]/g, "")) > Number(a.population.replace(/[^0-9]/g, ""))){
                             return -1;
                         }
                         return 0;

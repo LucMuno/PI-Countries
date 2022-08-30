@@ -12,6 +12,10 @@
     padding-right:10px;
     background-color: hsl(209, 23%, 22%);
     border-style: none;
+    width: 100%;
+    margin: 2px;
+    height: 55px;
+    border-radius: 5px;
 }
 .BackButton:hover {
     color: aqua;
@@ -41,7 +45,7 @@
     background-color: hsl(207, 26%, 17%);
     background-size:cover;
     background-repeat: repeat;
-    /*position: relative;*/
+   
 }
 .Data{
     display: flex;
@@ -112,14 +116,9 @@
     width: 600px;
     height: 250px;
     padding: 10px;
-    /*flex-wrap: wrap;*/
+   
 }
-/*.BordersTitle {
-    display: flex;
-    justify-content: center;
-    top: 0
 
-}*/
 .BorderCountriesContainer {
     display: flex;
     flex-direction: column;
@@ -143,6 +142,7 @@
     background-color: hsl(209, 23%, 22%);
     border-style: none;
     margin: 2px;
+    border-radius: 5px;
 }
 .BorderButton:hover {
     color: aqua;
@@ -156,8 +156,7 @@
     margin-top: 50px;
 }
 .Data2 {
-    /*display: flex;
-    flex-direction: row;*/
+    
     padding: 0;
     margin: 0;
     font-size: 18px;
@@ -166,4 +165,8 @@
     font-style: italic;
     padding-left: 5px;
     align-items: center;
+}
+.HomeMaps {
+    display: flex;
+    flex-direction: column;
 }

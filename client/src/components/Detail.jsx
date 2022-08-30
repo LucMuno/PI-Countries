@@ -5,8 +5,8 @@ import { getDetail, getCams } from "../actions";
 import { useEffect, useState } from "react";
 import style from './styles/Detail.module.css';
 import PuffLoader from "react-spinners/PuffLoader";
-import { FaArrowLeft } from 'react-icons/fa';
-//import style from './styles/Home.module.css'
+import { SiGooglemaps } from 'react-icons/si'
+
 
 export default function Detail(props) {
 const dispatch =  useDispatch();
@@ -16,6 +16,10 @@ const Country = useSelector((state)=> state.detail);
 const Cameras = useSelector((state)=> state.cams);
 const [loading, setLoading] = useState(false);
 console.log("detalle", Country)
+useEffect(()=>{
+    dispatch(getDetail(props.match.params.id)); 
+        
+},[props]);
 const override = {
     display: "block",
     margin: "0 auto",
@@ -27,13 +31,10 @@ countrywithcam.map((e) => {
       country = e.id
     }});
 console.log('prueba', props)
-useEffect(()=>{
-    dispatch(getDetail(props.match.params.id)); 
-    if(country){
+useEffect (() => {
     dispatch(getCams(country));
-    }
-    
-},[props, country]);
+},[country]);
+
 useEffect(() => {
     setLoading(true)
     setTimeout(() => {
@@ -41,9 +42,9 @@ useEffect(() => {
     },1500)
 },[])
 console.log("cameras", Cameras)
-//console.log(Country.Activities, 'hola');
 
-function selectDifficulty(value){
+
+/*function selectDifficulty(value){
     switch (value) {
         case '1':
             return 'Level 1 Low Difficulty';
@@ -74,7 +75,7 @@ function selectDuration(value){
         default:
            console.log('No duration'); 
     }
-}
+}*/
 function setCurrencies(value){
     var result = [];
     for(const property in value) {
@@ -111,15 +112,15 @@ console.log("borders", Country.borders)
 return(
     <>
     <div className={style.DetailComp}>
-    {/*<div className={styleD.Detail}>*/}
-     
+       
         
-            
-            <Link to='/home'><button className={style.BackButton}><FaArrowLeft/> HOME</button></Link>
+            <div className={style.HomeMaps}>
+            <Link to='/home'><button className={style.BackButton}>HOME</button></Link>
+            <button className={style.BackButton}><a href={Country.maps}  style={{textDecoration:"none", color:"aqua"}} target="_blank">
+                <h3><SiGooglemaps size={30}/>Google Maps</h3>
+            </a></button>    
+            </div>
             <div className={style.Detail}>
-            <a href={Country.maps} target="_blank">
-                <h3>Google Maps</h3>
-            </a>    
               
              <div>   
             <img src = {Country.flagimg} alt='Image no found' width='300px' height='200px' margin='3px'/>
@@ -134,7 +135,7 @@ return(
             <h4 className={style.Data}>Population: <h4 className={style.Data2}> {Country.population} inhabitants</h4></h4>
             <h4 className={style.Data}>Currencies: <h4 className={style.Data2}>{setCurrencies(Country.currencies)}</h4></h4>
             <h4 className={style.Data}>Languages: <h4 className={style.Data2}>{setLanguages(Country.languages)}</h4></h4>
-            {/*<button className={style.BackButton}>Borders: {Country.borders}</button>*/}
+            
             
             </div>
             <div className={style.BordersContainer}>

@@ -24,7 +24,7 @@ export default function CreateTouristActivity(){
     const countries = useSelector((state) => state.countries)
     const activities = useSelector((state) => state.activities)
     const [, setError] = useState({});
-    const [activityName, setActivityName] = useState('')
+    //const [activityName, setActivityName] = useState('')
     const [input, setInput] = useState ({
         name: '',
         difficulty: '',
