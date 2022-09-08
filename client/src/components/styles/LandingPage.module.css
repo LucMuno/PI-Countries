@@ -16,7 +16,6 @@
     
 }
 .content h1{
-    /*padding: 100px;*/
     margin-top: 200px;
     color: #ffffff;
     font-size: 100px;
@@ -30,6 +29,13 @@
 .content h1:hover{
     -webkit-text-stroke: 2px #ffffff;
     color: transparent;
+    
+}
+@media only screen and (max-width:720px){
+    .content h1{
+        font-size: 60px;
+        margin-top: 300px;
+    }
 }
 .content button{
     text-decoration: none;
@@ -46,7 +52,7 @@
     background-color: #ffffff;
     color: black;
     font-size: 26px;
-    
+    cursor: pointer;
 }
 .backvideo{
     top: 0;
